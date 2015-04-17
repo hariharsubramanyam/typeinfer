@@ -9,11 +9,23 @@ class InferenceModel:
     hypothesis about the type.
     '''
     def add_value(self, value):
-        pass
+        raise NotImplementedError("Subclass must implement add_value")
     '''
-    Return the inferred type (as a string) with a value num_passing.
+    Return a number between 0.0 and 1.0 indicating how likely the given values are of this type.
+    The programmer can interpret the term "accuracy" as desired.
     '''
-    def infer_type(self):
-        pass
+    def accuracy(self):
+        raise NotImplementedError("Subclass must implement accuracy")
+
+    '''
+    Return the result of converting value to the type that this inference model supports. If the
+    value cannot be converted, use a sensible default.
+    '''
     def convert(self, value):
-        pass
+        raise NotImplementedError("Subclass must implement convert")
+
+    '''
+    A string representation of the name of the type that the model is inferring.
+    '''
+    def type_name(self):
+        raise NotImplementedError("Subclass must implement type_name")
