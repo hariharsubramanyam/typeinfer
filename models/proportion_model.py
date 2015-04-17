@@ -49,7 +49,8 @@ class ProportionModel(InferenceModel):
     Attempt to convert the value, and mark it as a success if conversion worked.
     '''
     def add_value(self, value):
-        if self.can_convert(value):
+        success, val = self.try_convert(value)
+        if success:
             self.num_successes += 1
         self.num_trials += 1
     
