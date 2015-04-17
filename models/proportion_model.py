@@ -6,6 +6,7 @@ The accuracy is the proportion of successful conversions.
 '''
 class ProportionModel(InferenceModel):
     def __init__(self):
+        InferenceModel.__init__(self)
         self.num_successes = 0.0
         self.num_trials = 0
 

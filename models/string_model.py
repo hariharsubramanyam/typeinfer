@@ -4,6 +4,7 @@ Model for inferring whether the sequence of values has a string type.
 '''
 class StringModel(ProportionModel):
     def __init__(self, default=""):
+        ProportionModel.__init__(self)
         self.default = default
 
     def try_convert(self, value):

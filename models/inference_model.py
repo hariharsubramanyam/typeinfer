@@ -4,6 +4,8 @@ This is the class which forms the basis for classes with the type inference logi
 They should all extend this class and implement the methods listed.
 '''
 class InferenceModel:
+    def __init__(self):
+        pass
     '''
     Add the given value to the inference model. The model should use this value to update its
     hypothesis about the type.

@@ -4,6 +4,7 @@ Model for inferring whether the sequence of values has a numeric type.
 '''
 class NumberModel(ProportionModel):
     def __init__(self, default=0):
+        ProportionModel.__init__(self)
         self.default = default
 
     def try_convert(self, value):
