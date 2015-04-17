@@ -1,3 +1,4 @@
+from models.proportion_model import ProportionModel
 '''
 Model for inferring whether the sequence of values has a string type.
 '''

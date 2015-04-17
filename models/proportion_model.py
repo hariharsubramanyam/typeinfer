@@ -1,3 +1,4 @@
+from models.inference_model import InferenceModel
 '''
 An inference model which infers types by trying to cast each value into a given type.
 It counts the number of times the conversion is successful (and the total number of values).
