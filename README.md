@@ -20,7 +20,9 @@ defaults to 90%), then assume that the sequence has the given type.
 ## Basic
 Create an object.
 
-`t = TypeInfer()`
+```
+t = TypeInfer()
+```
 
 Feed it some values.
 
@@ -34,14 +36,18 @@ t.add_value("1232")
 
 Infer the type (it will be either `"empty"`, `"boolean"`, `"string"`, `"number"`, or `None`).
 
-`inferred_type = t.infer_type()`
+```
+inferred_type = t.infer_type()
+```
 
 In the example above `inferred_type == "number"`.
 
 ## Row-at-a-time
 Create an object.
 
-`t = ManyTypeInfer()`
+```
+t = ManyTypeInfer()
+```
 
 Feed it some rows (each row is a tuple and each must have the same number of elements).
 
@@ -54,7 +60,9 @@ t.add_value(("Alyssa", "Hacker", "Yes", "20,000"))
 
 Infer the types of the columns.
 
-`col_types = t.infer_column_types()`
+```
+col_types = t.infer_column_types()
+```
 
 In the example above, `col_types == ("string", "string", "boolean", "number")`
 
@@ -64,4 +72,6 @@ classes (see `models/proportion_model.py` and `models/inference_model.py`, respe
 
 Then, create your `TypeInfer` object with the models and threshold that you want.
 
-`t = TypeInfer((MyModel(), 0.9), (StringModel(), 0.9))`
+```
+t = TypeInfer((MyModel(), 0.9), (StringModel(), 0.9))
+```
