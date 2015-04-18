@@ -84,3 +84,23 @@ def test_messy_boolean():
     for i in xrange(2):
         t.add_value("Nothing")
     assert t.infer_type() == "boolean"
+
+'''
+Ensure that we can infer an empty type.
+'''
+def test_empty():
+    t = TypeInfer()
+    for i in xrange(100):
+        t.add_value('" "') # Make the values be empty quotes.
+    assert t.infer_type() == "empty"
+
+'''
+Ensure that we don't infer the empty type if there is at least one non-empty value.
+'''
+def test_no_wrong_empty():
+    t = TypeInfer()
+    for i in xrange(1000):
+        t.add_value("' '")
+    t.add_value("Because of this, it's not empty anymore")
+    assert t.infer_type() == "string"
+
