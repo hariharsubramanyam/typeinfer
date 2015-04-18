@@ -1,4 +1,5 @@
 from models.number_model import NumberModel
+from models.boolean_model import BooleanModel
 from models.string_model import StringModel 
 
 '''
@@ -26,11 +27,11 @@ class TypeInfer:
 
     If a models_with_thresholds is not specified, the default is:
 
-    ((NumberModel(), 0.9), (StringModel(), 0.9))
+    ((BooleanModel(), 0.9), (NumberModel(), 0.9), (StringModel(), 0.9))
     '''
     def __init__(self, models_with_thresholds=None):
         if models_with_thresholds is None:
-            models_with_thresholds = ((NumberModel(), 0.9), (StringModel(), 0.9))
+            models_with_thresholds = ((BooleanModel(), 0.9), (NumberModel(), 0.9), (StringModel(), 0.9))
         self.models_with_thresholds = models_with_thresholds
 
 
