@@ -9,7 +9,7 @@ class BooleanModel(ProportionModel):
 
     def try_convert(self, value):
         try:
-            lower_str_val = str(val).lower()
+            lower_str_val = str(value).lower()
             if lower_str_val in ["1", "yes", "y", "true", "+"]:
                 return True, True
             elif lower_str_val in ["0", "no", "n", "false", "-"]:

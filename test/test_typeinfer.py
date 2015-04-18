@@ -34,9 +34,53 @@ Ensure that we can infer a numeric type even when the numbers are messy
 '''
 def test_messy_numbers():
     t = TypeInfer()
-    for i in range(100):
+    for i in xrange(100):
         t.add_value(" 102,000 ")
-    for i in range(5):
+    for i in xrange(5):
         t.add_value("String")
+    for i in xrange(5):
+        t.add_value("yes")
     assert t.infer_type() == "number"
 
+'''
+Ensure that we can infer a boolean type
+'''
+def test_boolean():
+    # First test with True/False.
+    t = TypeInfer()
+    for i in xrange(100):
+        t.add_value(False)
+    for i in xrange(20):
+        t.add_value(True)
+    assert t.infer_type() == "boolean"
+    
+    # Now test with 1/0.
+    t = TypeInfer()
+    for i in xrange(100):
+        t.add_value(0)
+    for i in xrange(20):
+        t.add_value(1)
+    assert t.infer_type() == "boolean"
+
+    # Now test with YeS/nO.
+    t = TypeInfer()
+    for i in xrange(100):
+        t.add_value("YeS")
+    for i in xrange(20):
+        t.add_value("nO")
+    assert t.infer_type() == "boolean"
+
+'''
+Ensure that we can infer a boolean type even when there is other junk.
+'''
+def test_messy_boolean():
+    t = TypeInfer()
+    for i in xrange(100):
+        t.add_value(False)
+    for i in xrange(20):
+        t.add_value(True)
+    for i in xrange(10):
+        t.add_value("102")
+    for i in xrange(2):
+        t.add_value("Nothing")
+    assert t.infer_type() == "boolean"
